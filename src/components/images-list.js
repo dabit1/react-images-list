@@ -50,7 +50,10 @@ export default class ImagesList extends Component {
 
   hasMore () {
     const hasMore = this.state.page * this.props.imagesItemPerPage < this.props.children.length
-    this.props.onFinishScroll()
+
+    if (!hasMore) {
+      this.props.onFinishScroll()
+    }
 
     return hasMore
   }
