@@ -70,7 +70,10 @@ var ImagesList = function (_Component) {
     key: 'hasMore',
     value: function hasMore() {
       var hasMore = this.state.page * this.props.imagesItemPerPage < this.props.children.length;
-      this.props.onFinishScroll();
+
+      if (!hasMore) {
+        this.props.onFinishScroll();
+      }
 
       return hasMore;
     }
