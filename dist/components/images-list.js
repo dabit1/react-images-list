@@ -69,7 +69,10 @@ var ImagesList = function (_Component) {
   }, {
     key: 'hasMore',
     value: function hasMore() {
-      return this.state.page * this.props.imagesItemPerPage < this.props.children.length;
+      var hasMore = this.state.page * this.props.imagesItemPerPage < this.props.children.length;
+      this.props.onFinishScroll();
+
+      return hasMore;
     }
   }, {
     key: 'areImagesLoaded',
@@ -176,13 +179,15 @@ ImagesList.propTypes = {
   imagesItemPerPage: _propTypes2.default.number,
   pagination: _propTypes2.default.oneOf(['simple', 'infinite']),
   children: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.shape({ type: _propTypes2.default.oneOf([_imagesListItem2.default]) })), _propTypes2.default.shape({ type: _propTypes2.default.oneOf([_imagesListItem2.default]) })]),
+  onFinishScroll: _propTypes2.default.func,
   extraItem: _propTypes2.default.element,
   extraItemPosition: _propTypes2.default.number,
   infiniteLoading: _propTypes2.default.element
 };
 ImagesList.defaultProps = {
   imagesItemPerPage: 4,
-  pagination: 'simple'
+  pagination: 'simple',
+  onFinishScroll: function onFinishScroll() {}
 };
 exports.default = ImagesList;
 module.exports = exports['default'];
