@@ -11,6 +11,7 @@ export default class ImagesList extends Component {
       PropTypes.arrayOf(PropTypes.shape({ type: PropTypes.oneOf([ImagesListItem]) })),
       PropTypes.shape({ type: PropTypes.oneOf([ImagesListItem]) })
     ]),
+    onFinishScroll: PropTypes.func,
     extraItem: PropTypes.element,
     extraItemPosition: PropTypes.number,
     infiniteLoading: PropTypes.element
@@ -18,7 +19,8 @@ export default class ImagesList extends Component {
 
   static defaultProps = {
     imagesItemPerPage: 4,
-    pagination: 'simple'
+    pagination: 'simple',
+    onFinishScroll: () => {},
   }
 
   constructor (props) {
@@ -47,7 +49,10 @@ export default class ImagesList extends Component {
   }
 
   hasMore () {
-    return this.state.page * this.props.imagesItemPerPage < this.props.children.length
+    const hasMore = this.state.page * this.props.imagesItemPerPage < this.props.children.length
+    this.props.onFinishScroll()
+
+    return hasMore
   }
 
   areImagesLoaded() {
