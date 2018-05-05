@@ -14,10 +14,6 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactElementProptypes = require('react-element-proptypes');
-
-var _reactElementProptypes2 = _interopRequireDefault(_reactElementProptypes);
-
 var _reactInfiniteScroller = require('react-infinite-scroller');
 
 var _reactInfiniteScroller2 = _interopRequireDefault(_reactInfiniteScroller);
@@ -185,7 +181,10 @@ var ImagesList = function (_Component) {
 ImagesList.propTypes = {
   imagesItemPerPage: _propTypes2.default.number,
   pagination: _propTypes2.default.oneOf(['simple', 'infinite']),
-  children: _propTypes2.default.oneOfType([_reactElementProptypes2.default.elementOfType(_imagesListItem2.default), _propTypes2.default.arrayOf(_reactElementProptypes2.default.elementOfType(_imagesListItem2.default))]),
+  /*children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape({ type: PropTypes.oneOf([ImagesListItem]) })),
+    PropTypes.shape({ type: PropTypes.oneOf([ImagesListItem]) })
+  ]),*/
   onFinishScroll: _propTypes2.default.func,
   extraItem: _propTypes2.default.element,
   extraItemPosition: _propTypes2.default.number,
