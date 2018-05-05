@@ -1,6 +1,5 @@
 import React, { Component, Children } from 'react'
 import PropTypes from 'prop-types'
-import ElementPropTypes from 'react-element-proptypes'
 import InfiniteScroll from 'react-infinite-scroller'
 import ImagesListItem from './images-list-item'
 
@@ -8,10 +7,10 @@ export default class ImagesList extends Component {
   static propTypes = {
     imagesItemPerPage: PropTypes.number,
     pagination:  PropTypes.oneOf(['simple', 'infinite']),
-    children: PropTypes.oneOfType([
-      ElementPropTypes.elementOfType(ImagesListItem),
-      PropTypes.arrayOf(ElementPropTypes.elementOfType(ImagesListItem))
-    ]),
+    /*children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.shape({ type: PropTypes.oneOf([ImagesListItem]) })),
+      PropTypes.shape({ type: PropTypes.oneOf([ImagesListItem]) })
+    ]),*/
     onFinishScroll: PropTypes.func,
     extraItem: PropTypes.element,
     extraItemPosition: PropTypes.number,
